@@ -1,0 +1,81 @@
+---
+title: "Old Faithful exploratory analysis"
+author: "MEI"
+date: "24/02/2021"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+The Old Faithful data set contains the waiting time between eruptions and the duration of the eruption for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA. 
+
+First load the data: 
+
+```{r load_data}
+df <- faithful
+```
+
+The data description is given in the table below. 
+
+| variable | description | 
+| - | - |
+| eruptions | the duration of the eruption, minutes |
+| waiting | waiting time to next eruption, minutes | 
+
+
+A  summary of the distributions of each variable are as follows:
+
+```{r summary}
+summary(df)
+```
+
+The marginal distributions of the variables shown below: 
+
+```{r distribution}
+hist(df$eruptions)
+hist(df$waiting)
+```
+
+# Conclusions and further work
+
+Both the duration of eruptions and waiting time show a bimodal distribution. 
+In further work I will plot the scatter of the data ('eruptions duration' vs 'waiting time' ) to see whether
+I can detect any patterns. 
+
+# Updated analysis
+
+```{r}
+plot(df$waiting, df$eruptions)
+```
+
+This scatter plot clearly shows to separate distributions corresponding to the two different *types*
+of eruption - short eruptions which happen frequently, and long eruptions which happen infrequently. 
+
+```{r setup-2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
